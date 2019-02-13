@@ -3,6 +3,7 @@
     <string name="welcome_fragment_welcome_textview">Welcome!</string>
     <string name="welcome_fragment_description_textview">The objective of this app is to implement Dagger2 with the new
         features that came along Android Jetpack such as Navigation, Room, ViewModel, LiveData and WorkManager on a app
-        that fetches data of music albums and displays them in a list. Hope you enjoy this!
+        that fetches data of music albums and displays it in a list. Hope you enjoy this!
     </string>
+    <string name="welcome_fragment_continue_button">Let\'s go!</string>
 </resources>

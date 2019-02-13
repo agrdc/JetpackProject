@@ -3,10 +3,10 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/navigation_map" app:startDestination="@id/welcomeFragment">
 
-    <fragment android:id="@+id/welcomeFragment" android:name="bilulo.com.jetpackproject.ui.WelcomeFragment"
+    <fragment android:id="@+id/welcomeFragment" android:name="bilulo.com.jetpackproject.ui.welcome.WelcomeFragment"
               android:label="WelcomeFragment">
         <action android:id="@+id/action_welcomeFragment_to_listFragment" app:destination="@id/listFragment"/>
     </fragment>
-    <fragment android:id="@+id/listFragment" android:name="bilulo.com.jetpackproject.ui.ListFragment"
+    <fragment android:id="@+id/listFragment" android:name="bilulo.com.jetpackproject.ui.list.ListFragment"
               android:label="ListFragment"/>
 </navigation>

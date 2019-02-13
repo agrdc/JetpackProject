@@ -10,13 +10,30 @@
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/welcome_fragment_vertical_margin"
+            android:layout_marginLeft="@dimen/welcome_fragment_horizontal_margin"
+            android:layout_marginRight="@dimen/welcome_fragment_horizontal_margin"
             android:id="@+id/welcomeTextView"/>
 
     <TextView
             android:text="@string/welcome_fragment_description_textview"
             android:textSize="20sp"
             android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/welcome_fragment_vertical_margin"
+            android:layout_marginLeft="@dimen/welcome_fragment_horizontal_margin"
+            android:layout_marginRight="@dimen/welcome_fragment_horizontal_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/descriptionTextView"/>
+    <Button
+            android:layout_gravity="center_horizontal"
+            android:layout_width="200dp"
+            android:text="@string/welcome_fragment_continue_button"
+            android:layout_marginTop="@dimen/welcome_fragment_vertical_margin"
+            android:layout_marginLeft="@dimen/welcome_fragment_horizontal_margin"
+            android:layout_marginRight="@dimen/welcome_fragment_horizontal_margin"
+            android:layout_height="wrap_content"
+            android:id="@+id/continueButton"/>
+
+
 </LinearLayout>
