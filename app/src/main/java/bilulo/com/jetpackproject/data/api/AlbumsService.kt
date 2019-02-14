@@ -4,11 +4,10 @@ import bilulo.com.jetpackproject.data.model.Album
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class AlbumsService {
-    companion object {
+class AlbumsService @Inject constructor() {
         private val albumsApi = RetrofitInitializer.getAlbumsApi()
-
         fun getAlbums(listener: IAlbumsResponse<List<Album>?>) {
             albumsApi.getAlbums().enqueue(object : Callback<List<Album>> {
                 override fun onResponse(call: Call<List<Album>>, response: Response<List<Album>>) {
@@ -29,5 +28,5 @@ class AlbumsService {
                 }
             })
         }
-    }
+
 }

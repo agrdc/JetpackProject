@@ -5,24 +5,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import bilulo.com.jetpackproject.MainActivity
-import bilulo.com.jetpackproject.R
 import androidx.lifecycle.Observer
+import javax.inject.Inject
+import bilulo.com.jetpackproject.di.App
+
+
+
+
+
 
 
 class ListFragment : Fragment() {
 
-    private lateinit var listViewModel: ListViewModel
+    @Inject
+    lateinit var listViewModel: ListViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.list_fragment, container, false)
+        return inflater.inflate(bilulo.com.jetpackproject.R.layout.list_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         showActionBar()
-        listViewModel = ViewModelProviders.of(activity!!).get(ListViewModel::class.java)
+        (activity!!.application as App).appComponent!!.inject(this)
         listViewModel.init()
         listViewModel.albumList().observe(this, Observer { albumList ->
             //update UI
