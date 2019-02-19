@@ -1,32 +1,44 @@
 package bilulo.com.jetpackproject.data.api
 
 import bilulo.com.jetpackproject.data.model.Album
+import bilulo.com.jetpackproject.data.model.AlbumsObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import timber.log.Timber
 import javax.inject.Inject
 
 class AlbumsService @Inject constructor() {
-        private val albumsApi = RetrofitInitializer.getAlbumsApi()
-        fun getAlbums(listener: IAlbumsResponse<List<Album>?>) {
-            albumsApi.getAlbums().enqueue(object : Callback<List<Album>> {
-                override fun onResponse(call: Call<List<Album>>, response: Response<List<Album>>) {
-                    response.let {
-                        when {
-                            response.isSuccessful -> listener.onResponseSuccess(response.body())
-                            else -> if (response.code() == 404)
-                                listener.onResponseNotFound()
+    private val albumsApi = RetrofitInitializer.getAlbumsApi()
+    fun fetchAlbums(listener: IAlbumsResponse<List<Album>?>) {
+        albumsApi.getAlbums().enqueue(object : Callback<AlbumsObject> {
+            override fun onResponse(call: Call<AlbumsObject>, response: Response<AlbumsObject>) {
+                response.let {
+                    when {
+                        response.isSuccessful -> {
+                            val albumsList = response.body()?.albumsList
+                            if (albumsList != null && !albumsList.isEmpty())
+                                listener.onResponseSuccess(albumsList)
                             else
-                                listener.onResponseError(response.errorBody().toString())
+                                listener.onResponseError()
+                        }
+                        else -> if (response.code() == 404) {
+                            Timber.e(response.errorBody().toString())
+                            listener.onResponseNotFound()
+                        } else {
+                            Timber.d(response.errorBody().toString())
+                            listener.onResponseError()
                         }
                     }
                 }
+            }
 
-                @Override
-                override fun onFailure(call: Call<List<Album>>, t: Throwable) {
-                    listener.onResponseError(t.stackTrace.toString())
-                }
-            })
-        }
+            @Override
+            override fun onFailure(call: Call<AlbumsObject>, t: Throwable) {
+                Timber.e(t)
+                listener.onResponseError()
+            }
+        })
+    }
 
 }

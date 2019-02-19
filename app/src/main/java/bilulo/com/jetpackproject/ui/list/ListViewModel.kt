@@ -10,8 +10,8 @@ class ListViewModel @Inject constructor(var albumRepository: AlbumRepository) : 
 
     private lateinit var albumList: LiveData<List<Album>>
 
-    public fun init() {
-        albumList = albumRepository.getAlbums()
+    fun init() {
+        albumList = albumRepository.fetchAlbums()
     }
 
     fun albumList(): LiveData<List<Album>> {

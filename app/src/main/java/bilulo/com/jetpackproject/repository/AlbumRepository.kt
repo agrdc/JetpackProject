@@ -11,16 +11,16 @@ import androidx.lifecycle.MutableLiveData
 @Singleton
 class AlbumRepository @Inject constructor(var albumsService: AlbumsService) {
 
-        fun getAlbums() : LiveData<List<Album>> {
+        fun fetchAlbums() : LiveData<List<Album>> {
             val albumList = MutableLiveData<List<Album>>()
-            albumsService.getAlbums(object : IAlbumsResponse<List<Album>?> {
+            albumsService.fetchAlbums(object : IAlbumsResponse<List<Album>?> {
                 override fun onResponseSuccess(response: List<Album>?) {
                     albumList.value = response
                 }
                 override fun onResponseNotFound() {
                     //TODO
                 }
-                override fun onResponseError(msg : String) {
+                override fun onResponseError() {
                     //TODO
                 }
             })
