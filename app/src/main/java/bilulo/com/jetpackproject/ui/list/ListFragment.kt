@@ -9,7 +9,9 @@ import bilulo.com.jetpackproject.MainActivity
 import androidx.lifecycle.Observer
 import bilulo.com.jetpackproject.di.App
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import bilulo.com.jetpackproject.vm.ViewModelFactory
+import kotlinx.android.synthetic.main.list_fragment.*
 import javax.inject.Inject
 
 
@@ -28,10 +30,14 @@ class ListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         showActionBar()
         (activity!!.application as App).appComponent!!.inject(this)
+        albunsRecyclerView.layoutManager = LinearLayoutManager(activity)
+        val listAdapter = bilulo.com.jetpackproject.ui.list.adapter.ListAdapter()
+        albunsRecyclerView.adapter = listAdapter
+        albunsRecyclerView.addItemDecoration(ListItemMarginDecoration(16))
         listViewModel = ViewModelProviders.of(this, viewModelFactory).get(ListViewModel::class.java)
         listViewModel.init()
         listViewModel.albumList().observe(this, Observer { albumList ->
-
+            listAdapter.setData(albumList)
         })
     }
 
