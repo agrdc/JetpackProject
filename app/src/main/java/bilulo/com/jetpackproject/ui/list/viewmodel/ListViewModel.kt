@@ -1,4 +1,4 @@
-package bilulo.com.jetpackproject.ui.list
+package bilulo.com.jetpackproject.ui.list.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

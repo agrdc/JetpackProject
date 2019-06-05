@@ -1,4 +1,4 @@
-package bilulo.com.jetpackproject.ui.list
+package bilulo.com.jetpackproject.ui.list.view
 
 import android.graphics.Rect
 import android.view.View

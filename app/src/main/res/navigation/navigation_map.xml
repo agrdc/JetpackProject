@@ -7,6 +7,6 @@
               android:label="WelcomeFragment">
         <action android:id="@+id/action_welcomeFragment_to_listFragment" app:destination="@id/listFragment"/>
     </fragment>
-    <fragment android:id="@+id/listFragment" android:name="bilulo.com.jetpackproject.ui.list.ListFragment"
+    <fragment android:id="@+id/listFragment" android:name="bilulo.com.jetpackproject.ui.list.view.ListFragment"
               android:label="ListFragment"/>
 </navigation>

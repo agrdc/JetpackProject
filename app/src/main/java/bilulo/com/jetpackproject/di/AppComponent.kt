@@ -1,6 +1,6 @@
 package bilulo.com.jetpackproject.di
 
-import bilulo.com.jetpackproject.ui.list.ListFragment
+import bilulo.com.jetpackproject.ui.list.view.ListFragment
 import dagger.Component
 import javax.inject.Singleton
 

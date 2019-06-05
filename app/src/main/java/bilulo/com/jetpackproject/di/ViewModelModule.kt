@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import bilulo.com.jetpackproject.vm.ViewModelFactory
 import dagger.Binds
 import androidx.lifecycle.ViewModel
-import bilulo.com.jetpackproject.ui.list.ListViewModel
+import bilulo.com.jetpackproject.ui.list.viewmodel.ListViewModel
 import dagger.multibindings.IntoMap
 
 

@@ -1,4 +1,4 @@
-package bilulo.com.jetpackproject.ui.list
+package bilulo.com.jetpackproject.ui.list.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,11 +10,10 @@ import androidx.lifecycle.Observer
 import bilulo.com.jetpackproject.di.App
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import bilulo.com.jetpackproject.ui.list.viewmodel.ListViewModel
 import bilulo.com.jetpackproject.vm.ViewModelFactory
 import kotlinx.android.synthetic.main.list_fragment.*
 import javax.inject.Inject
-
-
 
 class ListFragment : Fragment() {
 
