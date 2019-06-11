@@ -14,6 +14,13 @@ import bilulo.com.jetpackproject.ui.list.viewmodel.ListViewModel
 import bilulo.com.jetpackproject.vm.ViewModelFactory
 import kotlinx.android.synthetic.main.list_fragment.*
 import javax.inject.Inject
+import android.text.Spannable
+import android.text.style.TypefaceSpan
+import android.text.SpannableString
+import android.view.animation.AnimationUtils.loadLayoutAnimation
+import android.view.animation.LayoutAnimationController
+import bilulo.com.jetpackproject.R
+
 
 class ListFragment : Fragment() {
 
@@ -22,26 +29,46 @@ class ListFragment : Fragment() {
     lateinit var listViewModel: ListViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(bilulo.com.jetpackproject.R.layout.list_fragment, container, false)
+        return inflater.inflate(R.layout.list_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        showActionBar()
         (activity!!.application as App).appComponent!!.inject(this)
-        albunsRecyclerView.layoutManager = LinearLayoutManager(activity)
+        configureActionBar()
+        configureRecyclerView()
+        initializeRecyclerViewData()
+    }
+
+    private fun initializeRecyclerViewData() {
         val listAdapter = bilulo.com.jetpackproject.ui.list.adapter.ListAdapter()
         albunsRecyclerView.adapter = listAdapter
-        albunsRecyclerView.addItemDecoration(ListItemMarginDecoration(16))
         listViewModel = ViewModelProviders.of(this, viewModelFactory).get(ListViewModel::class.java)
         listViewModel.init()
         listViewModel.albumList().observe(this, Observer { albumList ->
+            val controller : LayoutAnimationController = loadLayoutAnimation(context, R.anim.layout_anim_up_to_down)
+            albunsRecyclerView.layoutAnimation = controller
             listAdapter.setData(albumList)
+            listAdapter.notifyDataSetChanged()
+            albunsRecyclerView.scheduleLayoutAnimation()
         })
     }
 
-    private fun showActionBar() {
-        (activity as MainActivity).supportActionBar?.show()
+    private fun configureRecyclerView() {
+        val resId = R.anim.layout_anim_up_to_down
+        val animation = loadLayoutAnimation(context, resId)
+        albunsRecyclerView.layoutAnimation = animation
+        albunsRecyclerView.layoutManager = LinearLayoutManager(activity)
+        albunsRecyclerView.addItemDecoration(ListItemMarginDecoration(16))
+    }
+
+    private fun configureActionBar() {
+        val supportActionBar = (activity as MainActivity).supportActionBar
+        supportActionBar?.show()
+        val title = SpannableString(ListFragment::class.simpleName)
+        val span = TypefaceSpan("neuton_regular.ttf")
+        title.setSpan(span, 0, title.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        supportActionBar?.title = title
     }
 
 }
