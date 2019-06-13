@@ -18,7 +18,6 @@ import android.text.Spannable
 import android.text.style.TypefaceSpan
 import android.text.SpannableString
 import android.view.animation.AnimationUtils.loadLayoutAnimation
-import android.view.animation.LayoutAnimationController
 import bilulo.com.jetpackproject.R
 
 
@@ -46,20 +45,19 @@ class ListFragment : Fragment() {
         listViewModel = ViewModelProviders.of(this, viewModelFactory).get(ListViewModel::class.java)
         listViewModel.init()
         listViewModel.albumList().observe(this, Observer { albumList ->
-            val controller : LayoutAnimationController = loadLayoutAnimation(context, R.anim.layout_anim_up_to_down)
-            albunsRecyclerView.layoutAnimation = controller
+            progressBar.visibility = View.GONE
+            albunsRecyclerView.visibility = View.VISIBLE
             listAdapter.setData(albumList)
-            listAdapter.notifyDataSetChanged()
             albunsRecyclerView.scheduleLayoutAnimation()
         })
     }
 
     private fun configureRecyclerView() {
-        val resId = R.anim.layout_anim_up_to_down
-        val animation = loadLayoutAnimation(context, resId)
-        albunsRecyclerView.layoutAnimation = animation
         albunsRecyclerView.layoutManager = LinearLayoutManager(activity)
         albunsRecyclerView.addItemDecoration(ListItemMarginDecoration(16))
+        val resId = R.anim.layout_anim_up_to_down
+        val animationController = loadLayoutAnimation(context, resId)
+        albunsRecyclerView.layoutAnimation = animationController
     }
 
     private fun configureActionBar() {

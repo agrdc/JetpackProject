@@ -3,10 +3,7 @@ package bilulo.com.jetpackproject.data.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
-import bilulo.com.jetpackproject.utils.DateConverters
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
 @Entity
 data class Album (
@@ -28,7 +25,5 @@ data class Album (
     val coverUrl: String?,
     @field:SerializedName("description")
     @ColumnInfo(name = "description")
-    val description: String?,
-    @ColumnInfo(name = "last_refresh_date")
-    val lastRefreshDate : Date?
+    val description: String?
 )

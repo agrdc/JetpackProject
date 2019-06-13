@@ -21,7 +21,4 @@ interface AlbumDao {
 
     @Delete
     fun delete(album:Album)
-
-    @Query("SELECT * FROM album WHERE id=0 AND last_refresh_date > :lastRefreshMaxDate LIMIT 1")
-    fun hasUse(lastRefreshMaxDate: Date): Album
 }

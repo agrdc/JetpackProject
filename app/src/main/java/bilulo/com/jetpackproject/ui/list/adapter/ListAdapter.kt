@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import bilulo.com.jetpackproject.R
+import bilulo.com.jetpackproject.utils.DateUtil
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.list_item.view.*
 import timber.log.Timber
@@ -44,8 +45,11 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.AlbumViewHolder>() {
         holder.name.text = album?.name
         holder.artistName.text = album?.artist
         holder.description.text = album?.description
-        holder.releaseDate.text = album?.releaseDate
-
+        val releaseDate = album?.releaseDate
+        if (releaseDate != null) {
+            val formattedDate = DateUtil.formatDateFromString("dd/MM/yyyy", "yyyy-MM-dd", releaseDate)
+            holder.releaseDate.text = formattedDate
+        }
         try {
             val coverUri = Uri.parse(album?.coverUrl)
             Glide.with(mContext).load(coverUri).into(holder.albumCover)

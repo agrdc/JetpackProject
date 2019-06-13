@@ -34,6 +34,7 @@
 
             <TextView android:id="@+id/nameTextView"
                       android:layout_width="wrap_content"
+                      android:textSize="16sp"
                       android:fontFamily="@font/neuton_regular"
                       android:layout_height="wrap_content"
                       tools:text="The Piper at The Gates of Dawn"/>
@@ -61,7 +62,7 @@
                           app:layout_constraintTop_toTopOf="parent"
                           app:layout_constraintStart_toEndOf="@+id/artistNameTextView"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
-            <TextView android:id="@+id/descriptionTextView"
+            <bilulo.com.jetpackproject.ui.components.AdaptingTextView android:id="@+id/descriptionTextView"
                       android:layout_width="wrap_content"
                       android:fontFamily="@font/neuton_light"
                       android:layout_height="match_parent"
