@@ -29,16 +29,16 @@ dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //AndroidX
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha02'
-    implementation 'androidx.core:core-ktx:1.1.0-alpha04'
-    implementation 'androidx.core:core-ktx:1.0.1'
+    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    implementation 'androidx.core:core-ktx:1.2.0-alpha02'
+    implementation 'androidx.core:core-ktx:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.core:core-ktx:1.0.1'
+    implementation 'androidx.core:core-ktx:1.0.2'
 
     //Tests
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'
+    androidTestImplementation 'androidx.test:runner:1.3.0-alpha01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha01'
 
     //ViewModel
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.0.0@aar'
@@ -52,7 +52,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
 
     //Navigation
-    def nav_version = "1.0.0-beta02"
+    def nav_version = "1.0.0"
     implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version"
     implementation "android.arch.navigation:navigation-ui-ktx:$nav_version"
 
@@ -64,7 +64,7 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     //Room
-    def room_version = "2.1.0-alpha04"
+    def room_version = "2.1.0"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
@@ -73,5 +73,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
     //Kotlin Reflect
-    implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.20"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.31"
 }

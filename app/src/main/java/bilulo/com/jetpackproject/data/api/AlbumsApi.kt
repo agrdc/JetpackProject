@@ -5,6 +5,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface AlbumsApi {
-    @GET("/v2/5d02a1d33100004f4aab30df")
+    @GET("/v2/5d1d0fcc3400001fb1b60208")
     fun getAlbums() : Call<AlbumsObject>
 }
