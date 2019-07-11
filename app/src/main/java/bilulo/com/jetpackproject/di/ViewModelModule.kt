@@ -1,13 +1,12 @@
 package bilulo.com.jetpackproject.di
 
-import dagger.Module
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import bilulo.com.jetpackproject.ui.list.viewmodel.ListViewModel
 import bilulo.com.jetpackproject.vm.ViewModelFactory
 import dagger.Binds
-import androidx.lifecycle.ViewModel
-import bilulo.com.jetpackproject.ui.list.viewmodel.ListViewModel
+import dagger.Module
 import dagger.multibindings.IntoMap
-
 
 
 @Module

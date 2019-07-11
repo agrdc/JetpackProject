@@ -4,8 +4,9 @@ import bilulo.com.jetpackproject.ui.list.view.ListFragment
 import dagger.Component
 import javax.inject.Singleton
 
-@Component (modules = [ViewModelModule::class])
+
+@Component(modules = [ViewModelModule::class, AppModule::class])
 @Singleton
 interface AppComponent {
-    fun inject (listFragment: ListFragment)
+    fun inject(listFragment: ListFragment)
 }

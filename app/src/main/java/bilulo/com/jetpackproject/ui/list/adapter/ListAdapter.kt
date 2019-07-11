@@ -18,18 +18,16 @@ import timber.log.Timber
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.AlbumViewHolder>() {
 
-    lateinit var mContext: Context
     var mData: List<Album>? = null
     var onItemClick: ((Album?) -> Unit)? = null
 
-    fun setData(albumList: List<Album>) {
+    fun setData(albumList: List<Album>?) {
         mData = albumList
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdapter.AlbumViewHolder {
-        mContext = parent.context
-        val itemView: View = LayoutInflater.from(mContext).inflate(R.layout.list_item, parent, false)
+        val itemView: View = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
         return AlbumViewHolder(itemView)
     }
 
@@ -40,7 +38,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.AlbumViewHolder>() {
             return mData!!.size
     }
 
-    override fun onBindViewHolder(holder: ListAdapter.AlbumViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
         val album = mData?.get(position)
         holder.name.text = album?.name
         holder.artistName.text = album?.artist
@@ -52,7 +50,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.AlbumViewHolder>() {
         }
         try {
             val coverUri = Uri.parse(album?.coverUrl)
-            Glide.with(mContext).load(coverUri).into(holder.albumCover)
+            Glide.with(holder.itemView.context).load(coverUri).into(holder.albumCover)
         } catch (error: Exception) {
             Timber.e(error)
         }

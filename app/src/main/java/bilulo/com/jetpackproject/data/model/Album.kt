@@ -1,11 +1,12 @@
 package bilulo.com.jetpackproject.data.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
+import bilulo.com.jetpackproject.utils.DateConverter
 import com.google.gson.annotations.SerializedName
+import org.threeten.bp.OffsetDateTime
 
 @Entity
+@TypeConverters(DateConverter::class)
 data class Album (
     @field:SerializedName("id")
     @ColumnInfo(name = "id")
@@ -25,5 +26,7 @@ data class Album (
     val coverUrl: String?,
     @field:SerializedName("description")
     @ColumnInfo(name = "description")
-    val description: String?
+    val description: String?,
+    @ColumnInfo(name = "last_refresh_date")
+    var lastRefreshDate: OffsetDateTime?
 )

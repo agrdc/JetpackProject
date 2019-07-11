@@ -17,15 +17,12 @@ class AlbumsService @Inject constructor() {
                     when {
                         response.isSuccessful -> {
                             val albumsList = response.body()?.albumsList
-                            if (albumsList != null && !albumsList.isEmpty())
+                            if (albumsList != null && albumsList.isNotEmpty())
                                 listener.onResponseSuccess(albumsList)
                             else
                                 listener.onResponseError()
                         }
-                        else -> if (response.code() == 404) {
-                            Timber.e(response.errorBody().toString())
-                            listener.onResponseNotFound()
-                        } else {
+                        else -> {
                             Timber.d(response.errorBody().toString())
                             listener.onResponseError()
                         }

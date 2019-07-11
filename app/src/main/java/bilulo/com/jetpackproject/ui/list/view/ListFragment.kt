@@ -44,10 +44,10 @@ class ListFragment : Fragment() {
         albunsRecyclerView.adapter = listAdapter
         listViewModel = ViewModelProviders.of(this, viewModelFactory).get(ListViewModel::class.java)
         listViewModel.init()
-        listViewModel.albumList().observe(this, Observer { albumList ->
+        listViewModel.albumResource().observe(this, Observer { albumResource ->
             progressBar.visibility = View.GONE
             albunsRecyclerView.visibility = View.VISIBLE
-            listAdapter.setData(albumList)
+            listAdapter.setData(albumResource.data)
             albunsRecyclerView.scheduleLayoutAnimation()
         })
     }
